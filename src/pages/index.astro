@@ -3,20 +3,50 @@ import Layout from "../layouts/Layout.astro";
 import Feature from "../components/Feature.astro";
 import Articulo from "../components/Articulo.astro";
 import Footer from "../components/Footer.astro";
----
 
+
+---
+<script>
+	const hamburger = document.querySelector('#hamburger');
+	const menu = document.querySelector('#menu');
+	const close = document.querySelector('#close');
+	
+	hamburger.addEventListener('click', () => {
+	close.classList.remove('hidden');
+	hamburger.classList.add('hidden');
+	menu.classList.remove('hidden')
+
+})
+	close.addEventListener('click', () => {
+		menu.classList.add('hidden');
+		close.classList.add('hidden');
+		hamburger.classList.remove('hidden');
+	})
+
+</script>
 <Layout title="Welcome to Astro.">
 	<header class="">
 		<nav class="px-6 pt-6 pb-6 absolute w-full bg-white z-30">
 		  <div class="flex justify-between items-center">
 			<img src="./images/logo.svg" alt="">
-			<img src="./images/icon-hamburger.svg" alt="">
+			<img onclick="" id="hamburger"  src="./images/icon-hamburger.svg" alt="">
+			<img id="close" class="hidden" src="./images/icon-close.svg" alt="">
 		  </div>
 		</nav>
+		<div id="menu" class="relative z-50  mx-4">
+			<nav class="absolute bg-white flex flex-col top-20 w-full rounded-md py-6 items-center gap-4">
+				<a href="#">Home</a>
+				<a href="#">About</a>
+				<a href="#">Contact</a>
+				<a href="#">Blog</a>
+				<a href="#">Carrers</a>
+			</nav>
+		</div>
+
 	  </header>
 	  
 	  <section class="z-20">
-		<div class="">
+		<div class="relative">
 		  <img class=" w-full" src="./images/bg-intro-mobile.svg" alt="">
 		  <img class="absolute -top-16 right-0" src="./images/image-mockups.png" alt="">
 		</div>
